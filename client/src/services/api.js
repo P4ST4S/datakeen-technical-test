@@ -10,3 +10,12 @@ export const sendText = async (text) => {
     console.error("Error during API call: ", error);
   }
 };
+
+export const validateText = async (text) => {
+  try {
+    const response = await axios.post(`${API_ENDPOINT}validate-text`, { text });
+    return response.data;
+  } catch (error) {
+    console.error("Error during API call: ", error);
+  }
+};

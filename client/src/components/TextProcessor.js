@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { sendText } from "../services/api";
+import { sendText, validateText } from "../services/api";
 import Modal from "./Modal";
 
 function TextProcessor() {
@@ -29,19 +29,12 @@ function TextProcessor() {
     setWords(newWords);
   };
 
-  const handleValidate = () => {
-    const selectedWords = words
-      .map((word, index) =>
-        word.checked ? `${word.text} (position ${index + 1})` : null
-      )
-      .filter(Boolean);
-
-    const message = selectedWords.length
-      ? `Important words: ${selectedWords.join(", ")}`
-      : `Now words selected as important`;
-
-    setModalContent(message);
-    setIsModalOpen(true);
+  const handleValidate = async () => {
+    const response = await validateText(words);
+    if (response) {
+      setModalContent(response.message);
+      setIsModalOpen(true);
+    }
   };
 
   return (
