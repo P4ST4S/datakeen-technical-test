@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { sendText } from "../services/api";
 import Modal from "./Modal";
 
 function TextProcessor() {
+  const [isLoading, setIsLoading] = useState(false);
+
   const [text, setText] = useState("");
   const [words, setWords] = useState([]);
   const [showTable, setShowTable] = useState(false);
@@ -9,12 +12,15 @@ function TextProcessor() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState("");
 
-  const handleStart = () => {
-    const wordsArray = text
-      .split(/\s/)
-      .map((word) => ({ text: word, checked: false }));
-    setWords(wordsArray);
-    setShowTable(true);
+  const handleStart = async () => {
+    setIsLoading(true);
+    const responseWords = await sendText(text);
+    console.log(responseWords);
+    if (responseWords) {
+      setWords(responseWords);
+      setShowTable(true);
+    }
+    setIsLoading(false);
   };
 
   const handleCheckboxChange = (index) => {
@@ -43,7 +49,11 @@ function TextProcessor() {
       {!showTable ? (
         <div>
           <textarea value={text} onChange={(e) => setText(e.target.value)} />
-          <button onClick={handleStart}>START</button>
+          {isLoading ? (
+            <p>Loading...</p>
+          ) : (
+            <button onClick={handleStart}>START</button>
+          )}
         </div>
       ) : (
         <div>
