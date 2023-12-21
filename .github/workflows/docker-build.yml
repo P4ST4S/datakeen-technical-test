@@ -19,8 +19,11 @@ jobs:
       - name: Up Docker Compose
         run: docker-compose up -d
 
+      - name: List Docker Containers
+        run: docker ps -a
+
       - name: Test Docker Compose
-        run: curl -s --retry 10 --retry-connrefused http://localhost:3000/
+        run: docker run --network container:webapp-frontend appropriate/curl -s --retry 10 --retry-connrefused http://localhost:3000/
 
       - name: Down Docker Compose
         run: docker-compose down
