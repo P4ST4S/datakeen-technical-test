@@ -1,8 +1,9 @@
 import TextProcessor from "./components/TextProcessor";
+import "./styles/App.css";
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <TextProcessor />
     </div>
   );

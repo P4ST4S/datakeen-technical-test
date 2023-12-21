@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../styles/components/TextProcessor.css";
 import { sendText, validateText } from "../services/api";
 import Modal from "./Modal";
 
@@ -45,7 +46,7 @@ function TextProcessor() {
   };
 
   return (
-    <div>
+    <div className="TextProcessor">
       {!showTable ? (
         <div>
           <textarea
@@ -54,7 +55,7 @@ function TextProcessor() {
             onKeyDown={handleKeyDown}
           />
           {isLoading ? (
-            <p>Loading...</p>
+            <p className="loading">Loading...</p>
           ) : (
             <button onClick={handleStart}>START</button>
           )}
