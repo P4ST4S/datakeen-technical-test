@@ -68,3 +68,8 @@ npm start
 ```
 
 Now you can access the website locally on `localhost:3000` or `127.0.0.1:3000`
+
+## My social networks
+
+- [Linkedin](https://www.linkedin.com/in/antoinerospars/)
+- [Github](https://www.github.com/P4ST4S)
