@@ -20,7 +20,7 @@ jobs:
         run: docker-compose up -d
 
       - name: Test Docker Compose
-        run: docker run --network container:datakeen-technical-test_client appropriate/curl -s --retry 10 --retry-connrefused http://localhost:3000/
+        run: docker run --network container:datakeen-technical-test_client_1 appropriate/curl -s --retry 10 --retry-connrefused http://localhost:3000/
 
       - name: Down Docker Compose
         run: docker-compose down
