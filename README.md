@@ -74,11 +74,8 @@ Now you can access the website locally on `localhost:3000` or `127.0.0.1:3000`
 <div>
     <a href="https://www.linkedin.com/in/antoinerospars/">
         <img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="LinkedIn" style="vertical-align:middle; margin: 0 10px" />
-        LinkedIn
     </a>
-    <br>
     <a href="https://www.github.com/P4ST4S">
         <img src="https://img.icons8.com/material-outlined/48/000000/github.png" alt="GitHub" style="vertical-align:middle; margin: 0 10px" />
-        GitHub
     </a>
 </div>
