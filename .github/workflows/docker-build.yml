@@ -19,9 +19,6 @@ jobs:
       - name: Up Docker Compose
         run: docker-compose up -d
 
-      - name: Wait for Startup
-        run: sleep 10
-
       - name: Test Docker Compose
         run: curl -s --retry 10 --retry-connrefused http://localhost:5000/
 
