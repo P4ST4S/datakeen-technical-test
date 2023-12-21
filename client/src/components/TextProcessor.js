@@ -23,6 +23,13 @@ function TextProcessor() {
     setIsLoading(false);
   };
 
+  const handleKeyDown = async (event) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      await handleStart();
+    }
+  };
+
   const handleCheckboxChange = (index) => {
     const newWords = [...words];
     newWords[index].checked = !newWords[index].checked;
@@ -41,7 +48,11 @@ function TextProcessor() {
     <div>
       {!showTable ? (
         <div>
-          <textarea value={text} onChange={(e) => setText(e.target.value)} />
+          <textarea
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            onKeyDown={handleKeyDown}
+          />
           {isLoading ? (
             <p>Loading...</p>
           ) : (
